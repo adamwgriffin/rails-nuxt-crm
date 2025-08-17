@@ -1,8 +1,3 @@
 json.array! @contacts do |contact|
-  json.id contact.id
-  json.first_name contact.first_name
-  json.middle_name contact.middle_name
-  json.last_name contact.last_name
-  json.birthday contact.birthday
-  json.notes contact.notes
+  json.merge! contact.slice(:id, :first_name, :middle_name, :last_name, :birthday, :notes)
 end
