@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: contacts, error, pending } = await useContacts();
+const { data: contacts, error, pending } = await useFetchContacts();
 </script>
 
 <template>
@@ -9,7 +9,9 @@ const { data: contacts, error, pending } = await useContacts();
     <div v-else-if="error">Error: {{ error.message }}</div>
     <ul v-else>
       <li v-for="contact in contacts" :key="contact.id">
-        {{ contact.firstName }} {{ contact.lastName }}
+        <router-link :to="`/contacts/${contact.id}`">
+          {{ contact.firstName }} {{ contact.lastName }}
+        </router-link>
       </li>
     </ul>
   </main>
