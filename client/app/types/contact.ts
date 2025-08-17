@@ -1,7 +1,8 @@
 export type Contact = {
   id: number;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  middlwName: string;
+  lastName: string;
   birthday: string;
   notes: string;
 };

@@ -9,7 +9,7 @@ const { data: contacts, error, pending } = await useContacts();
     <div v-else-if="error">Error: {{ error.message }}</div>
     <ul v-else>
       <li v-for="contact in contacts" :key="contact.id">
-        {{ contact.first_name }} {{ contact.last_name }}
+        {{ contact.firstName }} {{ contact.lastName }}
       </li>
     </ul>
   </main>
