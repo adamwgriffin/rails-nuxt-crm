@@ -5,10 +5,6 @@ class ContactsController < ApplicationController
     @contacts = Contact.all
   end
 
-  def show
-    render json: @contact
-  end
-
   def create
     @contact = Contact.new(contact_params)
 
