@@ -1,24 +1,28 @@
-# README
+# Ultimate CRM
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Install:
 
-* System dependencies
+- Ruby >= 3.4.4
+- Node.js >= 23.4
+- Bun >= 1.2.19
 
-* Configuration
+If you use mise you can just run `mise install` for the runtime dependencies.
+Otherwise, use your favorite version manager for Ruby and Node.
 
-* Database creation
+Run `bundle` to install rails dependencies.
 
-* Database initialization
+Run `rails db:migrate` to run migrations.
 
-* How to run the test suite
+Run `cd client` then `bun install` to install Nuxt dependencies.
 
-* Services (job queues, cache servers, search engines, etc.)
+Copy the `client/env.example` file as `.env`.
 
-* Deployment instructions
+## Running the app in development
 
-* ...
+Run `overmind start` to start Rails and Nuxt.
+
+Visit [http://localhost:3000](http://localhost:3000)
