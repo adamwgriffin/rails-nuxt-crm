@@ -12,7 +12,8 @@ if (error.value?.statusCode === 404) {
   await navigateTo("/404", { redirectCode: 404 });
 }
 
-const formatDate = (dateString: string) => {
+const formatDate = (dateString: string | undefined) => {
+  if (!dateString) return;
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US");
 };
@@ -26,12 +27,13 @@ const formatDate = (dateString: string) => {
       <h1 class="text-2xl font-bold pb-4">
         {{ contact.firstName }} {{ contact.lastName }}
       </h1>
-      <div>Birthday: {{ formatDate(contact.birthday) }}</div>
+      <div>Birthday: {{ formatDate(contact?.birthday) }}</div>
       <div>Notes: {{ contact.notes }}</div>
     </div>
     <div v-else>Contact not found</div>
     <div class="pt-6">
-      <router-link to="/contacts">back</router-link>
+      <router-link to="/contacts">back</router-link> |
+      <router-link :to="`/contacts/edit/${route.params.id}`">edit</router-link>
     </div>
   </main>
 </template>
