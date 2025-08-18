@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 
+const config = useRuntimeConfig();
 const route = useRoute();
 const {
   data: contact,
@@ -17,6 +18,27 @@ const formatDate = (dateString: string | undefined) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US");
 };
+
+const deleteContact = async () => {
+  if (!contact.value) return;
+
+  const confirmed = confirm(
+    `Are you sure you want to delete ${contact.value.firstName} ${contact.value.lastName}?`
+  );
+
+  if (confirmed) {
+    try {
+      await $fetch(`${config.public.apiBase}/contacts/${contact.value.id}`, {
+        method: "DELETE"
+      });
+
+      await navigateTo("/contacts");
+    } catch (e) {
+      console.error("Failed to delete contact:", e);
+      alert("Failed to delete contact. Please try again.");
+    }
+  }
+};
 </script>
 
 <template>
@@ -29,6 +51,16 @@ const formatDate = (dateString: string | undefined) => {
       </h1>
       <div>Birthday: {{ formatDate(contact?.birthday) }}</div>
       <div>Notes: {{ contact.notes }}</div>
+      <div class="pt-6">
+        <button
+          :disabled="!contact"
+          class="text-red-600 hover:text-red-800 underline cursor-pointer"
+          @click="deleteContact"
+        >
+          delete
+        </button> 
+        💥
+      </div>
     </div>
     <div v-else>Contact not found</div>
     <div class="pt-6">
