@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
 body {
-  @apply text-white bg-slate-700;
+  @media (prefers-color-scheme: dark) {
+    @apply text-white bg-slate-700;
+  }
 }
