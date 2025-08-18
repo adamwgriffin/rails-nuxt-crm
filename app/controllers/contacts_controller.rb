@@ -6,21 +6,15 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.new(contact_params)
+    @contact = Contact.create!(contact_params)
 
-    if @contact.save
-      render json: @contact, status: :created, location: @contact
-    else
-      render json: @contact.errors, status: :unprocessable_entity
-    end
+    render status: :created
   end
 
   def update
-    if @contact.update(contact_params)
-      render json: @contact
-    else
-      render json: @contact.errors, status: :unprocessable_entity
-    end
+    @contact.update!(contact_params)
+
+    head :ok
   end
 
   def destroy
