@@ -1,5 +1,5 @@
 json.contacts @contacts do |contact|
-  json.extract! contact, :id, :first_name, :middle_name, :last_name, :birthday, :notes
+  json.extract! contact, :id, :first_name, :last_name
 end
 
 json.meta do

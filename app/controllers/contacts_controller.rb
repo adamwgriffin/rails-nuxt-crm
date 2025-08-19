@@ -4,7 +4,10 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show update destroy ]
 
   def index
-    @contacts = Contact.page(params[:page]).per(params[:per_page] || DEFAULT_PER_PAGE)
+    @contacts = Contact
+      .select(:id, :first_name, :last_name)
+      .page(params[:page])
+      .per(params[:per_page] || DEFAULT_PER_PAGE)
   end
 
   def create

@@ -16,9 +16,9 @@ export type Pagination = {
 export type ContactsRequest = {
   page: number;
   per_page?: number;
-}
+};
 
 export type ContactsResponse = {
-  contacts: Contact[];
+  contacts: Pick<Contact, "id" | "firstName" | "lastName">[];
   meta: Pagination;
 };
