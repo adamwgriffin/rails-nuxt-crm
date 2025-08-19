@@ -3,7 +3,8 @@ json.contacts @contacts do |contact|
 end
 
 json.meta do
-  json.current_page @contacts.current_page
-  json.total_pages  @contacts.total_pages
-  json.total_count  @contacts.total_count
+  json.extract! @contacts,
+    :current_page,
+    :total_pages,
+    :total_count
 end
