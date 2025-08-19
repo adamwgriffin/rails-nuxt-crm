@@ -15,7 +15,7 @@ export type Pagination = {
 
 export type ContactsRequest = {
   page: number;
-  per_page?: number;
+  perPage?: number;
 };
 
 export type ContactsResponse = {

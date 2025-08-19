@@ -35,7 +35,12 @@ gem "thruster", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 gem "rack-cors"
 
+# Pagination
 gem "kaminari"
+
+# Lets API users pass in and receive camelCased or dash-cased keys, while your
+# Rails app receives and produces snake_cased ones.
+gem "olive_branch"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
