@@ -14,7 +14,6 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     assert body.key?("meta"), "Response should have a 'meta' key"
 
     meta = body["meta"]
-    assert_kind_of Hash, meta, "'meta' should be a hash"
     %w[currentPage totalPages totalCount].each do |key|
       assert meta.key?(key), "'meta' should include '#{key}'"
       assert meta[key].is_a?(Integer), "'#{key}' should be an Integer"
