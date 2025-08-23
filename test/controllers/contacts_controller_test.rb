@@ -12,7 +12,17 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create contact" do
     assert_difference("Contact.count") do
-      post contacts_url, params: { contact: { birthday: @contact.birthday, first_name: @contact.first_name, last_name: @contact.last_name, middle_name: @contact.middle_name, notes: @contact.notes } }, as: :json
+      post contacts_url,
+        params: {
+          contact: {
+            birthday: @contact.birthday,
+            first_name: @contact.first_name,
+            last_name: @contact.last_name,
+            middle_name: @contact.middle_name,
+            notes: @contact.notes
+          }
+        },
+        as: :json
     end
 
     assert_response :created
@@ -24,7 +34,17 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update contact" do
-    patch contact_url(@contact), params: { contact: { birthday: @contact.birthday, first_name: @contact.first_name, last_name: @contact.last_name, middle_name: @contact.middle_name, notes: @contact.notes } }, as: :json
+    patch contact_url(@contact),
+      params: {
+        contact: {
+          birthday: @contact.birthday,
+          first_name: @contact.first_name,
+          last_name: @contact.last_name,
+          middle_name: @contact.middle_name,
+          notes: @contact.notes
+        }
+      },
+      as: :json
     assert_response :success
   end
 
