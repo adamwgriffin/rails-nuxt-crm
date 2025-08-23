@@ -56,9 +56,9 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     def contact_params(params = {})
       {
         birthday: @contact.birthday,
-        first_name: @contact.first_name,
-        last_name: @contact.last_name,
-        middle_name: @contact.middle_name,
+        firstName: @contact.first_name,
+        lastName: @contact.last_name,
+        middleName: @contact.middle_name,
         notes: @contact.notes
       }.merge(params)
     end
