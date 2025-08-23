@@ -24,15 +24,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   test "should create contact" do
     assert_difference("Contact.count") do
       post contacts_url,
-        params: {
-          contact: {
-            birthday: @contact.birthday,
-            first_name: @contact.first_name,
-            last_name: @contact.last_name,
-            middle_name: @contact.middle_name,
-            notes: @contact.notes
-          }
-        },
+        params: { contact: contact_params },
         as: :json
     end
 
@@ -46,15 +38,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update contact" do
     patch contact_url(@contact),
-      params: {
-        contact: {
-          birthday: @contact.birthday,
-          first_name: @contact.first_name,
-          last_name: @contact.last_name,
-          middle_name: @contact.middle_name,
-          notes: @contact.notes
-        }
-      },
+      params: { contact: contact_params },
       as: :json
     assert_response :ok
   end
@@ -66,4 +50,16 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :no_content
   end
+
+  private
+
+    def contact_params(params = {})
+      {
+        birthday: @contact.birthday,
+        first_name: @contact.first_name,
+        last_name: @contact.last_name,
+        middle_name: @contact.middle_name,
+        notes: @contact.notes
+      }.merge(params)
+    end
 end
