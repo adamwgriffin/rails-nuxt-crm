@@ -20,7 +20,7 @@ Copy the `client/env.example` file as `.env`.
 
 ## Running the app in development
 
-Run `overmind start` to start Rails and Nuxt.
+Run `bin/dev` to start Rails and Nuxt with Overmind.
 
 Visit [http://localhost:3000](http://localhost:3000)
 
