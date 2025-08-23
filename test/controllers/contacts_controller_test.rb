@@ -7,7 +7,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get contacts_url, as: :json
-    assert_response :success
+    assert_response :ok
   end
 
   test "should create contact" do
@@ -30,7 +30,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should show contact" do
     get contact_url(@contact), as: :json
-    assert_response :success
+    assert_response :ok
   end
 
   test "should update contact" do
@@ -45,7 +45,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
         }
       },
       as: :json
-    assert_response :success
+    assert_response :ok
   end
 
   test "should destroy contact" do
