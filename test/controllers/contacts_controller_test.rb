@@ -8,6 +8,17 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get contacts_url, as: :json
     assert_response :ok
+
+    body = JSON.parse(@response.body)
+    assert body.key?("contacts"), "Response should have a 'contacts' key"
+    assert body.key?("meta"), "Response should have a 'meta' key"
+
+    meta = body["meta"]
+    assert_kind_of Hash, meta, "'meta' should be a hash"
+    %w[currentPage totalPages totalCount].each do |key|
+      assert meta.key?(key), "'meta' should include '#{key}'"
+      assert meta[key].is_a?(Integer), "'#{key}' should be an Integer"
+    end
   end
 
   test "should create contact" do
