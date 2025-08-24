@@ -49,9 +49,12 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update contact" do
     patch contact_url(@contact),
-      params: { contact: contact_params },
+      params: { contact: contact_params({ notes: "Updated notes" }) },
       as: :json
     assert_response :ok
+
+    @contact.reload
+    assert_equal "Updated notes", @contact.notes
   end
 
   test "should destroy contact" do
