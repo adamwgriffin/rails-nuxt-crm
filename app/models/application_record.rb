@@ -3,7 +3,7 @@ class ApplicationRecord < ActiveRecord::Base
 
   primary_abstract_class
 
-  def self.paginate(params)
-    page(params[:page]).per(params[:per_page] || DEFAULT_PER_PAGE)
+  def self.paginate(options)
+    page(options[:page]).per(options[:per_page] || DEFAULT_PER_PAGE)
   end
 end
