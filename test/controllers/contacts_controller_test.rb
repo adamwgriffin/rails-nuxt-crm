@@ -63,6 +63,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :no_content
+    assert_not Contact.exists?(@contact.id), "Contact should be deleted from the database"
   end
 
   private
