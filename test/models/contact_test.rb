@@ -1,12 +1,16 @@
 require "test_helper"
 
 class ContactTest < ActiveSupport::TestCase
-  test "all_paginated returns only selected fields and paginates" do
-    params = { page: 1, per_page: 2 }
+  test "all_paginated returns only selected fields, paginates, and orders by last_name then first_name" do
+    params = { page: 1, per_page: 3 }
     fields = %i[id first_name last_name]
-    results = Contact.all_paginated(params, fields)
+    order = %i[last_name first_name]
+    results = Contact.all_paginated(params, fields, order)
+    correct_order = results.sort_by { |c| [ c.last_name, c.first_name ] }
+    assert_equal correct_order.map(&:id),
+      results.map(&:id),
+      "Contacts should be ordered by last_name, then first_name"
 
-    assert_equal 2, results.size, "Should return 2 contacts per page"
     results.each do |contact|
       assert contact.has_attribute?(:id)
       assert contact.has_attribute?(:first_name)

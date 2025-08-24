@@ -1,22 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
-  birthday: 2025-03-28
+  first_name: Ronnie
+  middle_name: James
+  last_name: Dio
+  birthday: 1942-07-10
   notes: MyText
 
 two:
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
-  birthday: 2025-03-28
+  first_name: John
+  middle_name:
+  last_name: Bonham
+  birthday: 1948-05-31
   notes: MyText
 
 three:
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
-  birthday: 2025-03-28
+  first_name: Jake
+  middle_name: E.
+  last_name: Lee
+  birthday: 1957-02-15
   notes: MyText
