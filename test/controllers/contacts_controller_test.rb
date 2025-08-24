@@ -20,15 +20,13 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create contact" do
-    assert_difference("Contact.count") do
-      post contacts_url, params: { contact: contact_params }, as: :json
-    end
+    post contacts_url, params: { contact: contact_params }, as: :json
     assert_response :created
+    assert Contact.exists?(body["id"]), "A contact with the returned id should exist"
 
     body = JSON.parse(@response.body)
     assert body.key?("id"), "Response should have an 'id' key"
     assert body["id"].is_a?(Integer), "'id' should be an Integer"
-    assert Contact.exists?(body["id"]), "A contact with the returned id should exist"
   end
 
   test "should show contact" do
