@@ -1,6 +1,4 @@
-json.contacts @contacts do |contact|
-  json.extract! contact, :id, :first_name, :last_name
-end
+json.contacts @contacts
 
 json.meta do
   json.extract! @contacts,

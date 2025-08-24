@@ -19,6 +19,23 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "index respects pagination and fields params" do
+    params = {
+      page: 1,
+      perPage: 2,
+      fields: [ "id", "first_name" ]
+    }
+    get contacts_url(params), as: :json
+    assert_response :ok
+    body = JSON.parse(@response.body)
+    assert_equal 2, body["contacts"].size
+    body["contacts"].each do |contact|
+      assert contact.key?("id")
+      assert contact.key?("firstName")
+      refute contact.key?("lastName")
+    end
+  end
+
   test "should create contact" do
     post contacts_url, params: { contact: contact_params }, as: :json
     assert_response :created
