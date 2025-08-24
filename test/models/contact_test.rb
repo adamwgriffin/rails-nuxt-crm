@@ -9,6 +9,7 @@ class ContactTest < ActiveSupport::TestCase
       order: %i[last_name first_name]
     }
     results = Contact.all_paginated(options)
+    assert_equal results.count, options[:per_page], "Contact count should match per_page"
     correct_order = results.sort_by { |c| [ c.last_name, c.first_name ] }
     assert_equal correct_order.map(&:id),
       results.map(&:id),
