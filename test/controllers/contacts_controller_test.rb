@@ -12,7 +12,6 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
     body = JSON.parse(@response.body)
     assert body.key?("contacts"), "Response should have a 'contacts' key"
     assert body.key?("meta"), "Response should have a 'meta' key"
-
     meta = body["meta"]
     %w[currentPage totalPages totalCount].each do |key|
       assert meta.key?(key), "'meta' should include '#{key}'"
@@ -35,6 +34,17 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   test "should show contact" do
     get contact_url(@contact), as: :json
     assert_response :ok
+
+    body = JSON.parse(@response.body)
+    expected = {
+      "id" => @contact.id,
+      "firstName" => @contact.first_name,
+      "middleName" => @contact.middle_name,
+      "lastName" => @contact.last_name,
+      "birthday" => @contact.birthday&.iso8601,
+      "notes" => @contact.notes
+    }
+    assert_equal body, expected
   end
 
   test "should update contact" do
