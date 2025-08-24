@@ -13,3 +13,10 @@ two:
   last_name: MyString
   birthday: 2025-03-28
   notes: MyText
+
+three:
+  first_name: MyString
+  middle_name: MyString
+  last_name: MyString
+  birthday: 2025-03-28
+  notes: MyText

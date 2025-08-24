@@ -2,9 +2,7 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show update destroy ]
 
   def index
-    @contacts = Contact
-      .select(:id, :first_name, :last_name)
-      .paginate(params)
+    @contacts = Contact.all_paginated(params)
   end
 
   def create
