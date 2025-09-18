@@ -16,8 +16,6 @@ Run `rails db:migrate` to run migrations.
 
 Run `cd client` then `bun install` to install Nuxt dependencies.
 
-Copy the `client/env.example` file as `.env`.
-
 ## Running the app in development
 
 Run `bin/dev` to start Rails and Nuxt with Overmind.

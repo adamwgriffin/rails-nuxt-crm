@@ -1,12 +1,12 @@
 require "test_helper"
 
-class ContactsControllerTest < ActionDispatch::IntegrationTest
+class Api::ContactsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @contact = contacts(:one)
   end
 
   test "should get index" do
-    get contacts_url, as: :json
+    get api_contacts_url, as: :json
     assert_response :ok
 
     body = JSON.parse(@response.body)
@@ -25,7 +25,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
       perPage: 2,
       fields: [ "id", "first_name" ]
     }
-    get contacts_url(params), as: :json
+    get api_contacts_url(params), as: :json
     assert_response :ok
     body = JSON.parse(@response.body)
     assert_equal 2, body["contacts"].size
@@ -37,7 +37,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create contact" do
-    post contacts_url, params: { contact: contact_params }, as: :json
+    post api_contacts_url, params: { contact: contact_params }, as: :json
     assert_response :created
     body = JSON.parse(@response.body)
     assert body.key?("id"), "Response should have an 'id' key"
@@ -46,7 +46,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show contact" do
-    get contact_url(@contact), as: :json
+    get api_contact_url(@contact), as: :json
     assert_response :ok
 
     body = JSON.parse(@response.body)
@@ -62,7 +62,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update contact" do
-    patch contact_url(@contact),
+    patch api_contact_url(@contact),
       params: { contact: contact_params({ notes: "Updated notes" }) },
       as: :json
     assert_response :ok
@@ -72,7 +72,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy contact" do
-    delete contact_url(@contact), as: :json
+    delete api_contact_url(@contact), as: :json
 
     assert_response :no_content
     assert_not Contact.exists?(@contact.id), "Contact should be deleted from the database"

@@ -11,7 +11,21 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE
+      apiBase: "/api"
     }
-  }
+  },
+  // We need the proxy rule because in development Nuxt runs on a different port
+  // than Rails, which causes CORS issues when the browser client makes API
+  // requests to the server. There are multiple ways of handling this but using
+  // routeRules appears to be the favored solution for Nuxt 4 since it is fairly
+  // straightforward and works well with useFetch() and SSR on the server
+  // (devProxy only works on the client).
+  routeRules:
+    process.env.NODE_ENV === "development"
+      ? {
+          "/api/**": {
+            proxy: "http://localhost:4000/api/**"
+          }
+        }
+      : {}
 });
