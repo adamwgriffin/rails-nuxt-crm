@@ -184,10 +184,6 @@ GEM
       multi_json
       rails (>= 4.0)
     ostruct (0.6.3)
-    overmind (2.5.1)
-    overmind (2.5.1-aarch64-linux)
-    overmind (2.5.1-arm-linux)
-    overmind (2.5.1-arm64-darwin)
     parallel (1.27.0)
     parser (3.3.9.0)
       ast (~> 2.4.1)
@@ -347,7 +343,6 @@ DEPENDENCIES
   kamal
   kaminari
   olive_branch
-  overmind
   puma (>= 5.0)
   rails (~> 8.0.2)
   rubocop-rails-omakase

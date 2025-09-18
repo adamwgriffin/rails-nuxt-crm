@@ -18,9 +18,11 @@ Run `cd client` then `bun install` to install Nuxt dependencies.
 
 ## Running the app in development
 
-Run `bin/dev` to start Rails and Nuxt with Overmind.
+Run `bin/dev` to start Rails and run `cd client && bun run dev` to run Nuxt.
 
-Visit [http://localhost:3000](http://localhost:3000)
+Alternatively, run them both using the Procfile with a Procfile manager such as Foreman or Overmind.
+
+Visit [http://localhost:3000](http://localhost:3000) to view the client.
 
 ## Notes
 
