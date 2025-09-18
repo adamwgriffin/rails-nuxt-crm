@@ -12,7 +12,7 @@ If you use mise you can just run `mise install` for the runtime dependencies. Ot
 
 Run `bundle` to install rails dependencies.
 
-Run `rails db:migrate` to run migrations.
+Run `bin/rails db:setup` to create the database and seed it with dev data.
 
 Run `cd client` then `bun install` to install Nuxt dependencies.
 
@@ -23,6 +23,8 @@ Run `bin/dev` to start Rails and run `cd client && bun run dev` to run Nuxt.
 Alternatively, run them both using the Procfile with a Procfile manager such as Foreman or Overmind.
 
 Visit [http://localhost:3000](http://localhost:3000) to view the client.
+
+Run `bin/rails test` to run the tests.
 
 ## Notes
 
